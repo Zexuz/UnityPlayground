@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4998909209978522}
   - component: {fileID: 23467758696064114}
   - component: {fileID: 102126499663294020}
+  - component: {fileID: 114694779538245608}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -41,6 +42,7 @@ GameObject:
   - component: {fileID: 23673541684140242}
   - component: {fileID: 54718533931428362}
   - component: {fileID: 114799530039208056}
+  - component: {fileID: 114035465161486704}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -154,7 +156,7 @@ Rigidbody:
   m_GameObject: {fileID: 1465577827633610}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1.36
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -194,6 +196,31 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4289757971
+--- !u!114 &114035465161486704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465577827633610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b964a794bb03f0342b977078d2d1aae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractedTo: {fileID: 0}
+  strengthOfAttraction: 1
+--- !u!114 &114694779538245608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286385875281936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bc5dc9ad4f208499c573a06318abd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 0}
 --- !u!114 &114799530039208056
 MonoBehaviour:
   m_ObjectHideFlags: 1

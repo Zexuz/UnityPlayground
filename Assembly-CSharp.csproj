@@ -52,11 +52,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Attract.cs" />
-    <Compile Include="Assets\Generator.cs" />
-    <Compile Include="Assets\GeneratorEditor.cs" />
-    <Compile Include="Assets\Modifier.cs" />
-    <Compile Include="Assets\Stabilizatior.cs" />
+    <Compile Include="Assets\Scripts\Attract.cs" />
+    <Compile Include="Assets\Scripts\Generator.cs" />
+    <Compile Include="Assets\Scripts\GeneratorEditor.cs" />
+    <Compile Include="Assets\Scripts\MessageSender.cs" />
+    <Compile Include="Assets\Scripts\Modifier.cs" />
+    <Compile Include="Assets\Scripts\Stabilizatior.cs" />
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>

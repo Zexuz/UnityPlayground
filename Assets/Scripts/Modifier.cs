@@ -6,9 +6,11 @@ using UnityEngine;
 public class Modifier : MonoBehaviour
 {
     public GameObject GameObjectPrefab;
+    public float ShrinkFactor = 1;
+    public float IncreseFactor = 1;
 
     private Dictionary<string, GameObjectNode> _nodes;
-    private TimeSpan LifeTime = new TimeSpan(0, 0, 0, 1);
+    public int LifeTime = 1;
 
     private void Start()
     {
@@ -20,10 +22,11 @@ public class Modifier : MonoBehaviour
         if (!_nodes.ContainsKey(messageString))
         {
             var messageWeapper = new MsgWrapper(messageString);
-            var gObj = Instantiate(GameObjectPrefab, GameObjectPrefab.transform.position, Quaternion.identity);
+            var gObj = Instantiate(GameObjectPrefab, new Vector3(), Quaternion.identity);
             _nodes[messageString] = new GameObjectNode(messageWeapper, gObj);
         }
         _nodes[messageString].MsgWrapper.AddToList(new Message(LifeTime));
+        _nodes[messageString].GameObject.transform.localScale *= IncreseFactor;
     }
 
     private void Update()
@@ -33,8 +36,16 @@ public class Modifier : MonoBehaviour
         {
             var gameObjectNode = kvp.Value;
             gameObjectNode.MsgWrapper.Update();
-            if (gameObjectNode.MsgWrapper.Messages.Count == 0)
+            var messageCount = gameObjectNode.MsgWrapper.Messages.Count;
+            if (messageCount == 0)
                 keysToRemove.Add(kvp.Key);
+
+            if (gameObjectNode.GameObject.transform.localScale.magnitude < 0.5f)
+                keysToRemove.Add(kvp.Key);
+
+            var factor = (messageCount * ShrinkFactor) - messageCount + 1;
+            Debug.Log(factor);
+            gameObjectNode.GameObject.transform.localScale /= factor;
         }
 
         foreach (var key in keysToRemove)
@@ -72,7 +83,7 @@ public class MsgWrapper
     public MsgWrapper(string messageString)
     {
         MessageString = messageString;
-        
+
         _messages = new List<Message>();
     }
 
@@ -83,18 +94,21 @@ public class MsgWrapper
 
     public void Update()
     {
-        if (_messages.Where(message => message.ShouldDestory()).Any(message => !_messages.Remove(message)))
-            throw new Exception("We could not remove the object!");
+        for (int i = _messages.Count - 1; i >= 0; i--)
+        {
+            if (_messages[i].ShouldDestory())
+                _messages.RemoveAt(i);
+        }
     }
 }
 
 public class Message
 {
     public DateTime Created { get; private set; }
-    public TimeSpan LifeTime { get; private set; }
+    public int LifeTime { get; private set; }
 
 
-    public Message(TimeSpan lifeTime)
+    public Message(int lifeTime)
     {
         Created = DateTime.Now;
         LifeTime = lifeTime;
@@ -102,7 +116,7 @@ public class Message
 
     public bool ShouldDestory()
     {
-        var timeLeft = (Created + LifeTime) - DateTime.Now;
+        var timeLeft = Created.AddSeconds(LifeTime) - DateTime.Now;
         return timeLeft.TotalMilliseconds < 0;
     }
 }
