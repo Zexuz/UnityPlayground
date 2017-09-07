@@ -8,6 +8,8 @@ public class NodeBehaviour : MonoBehaviour {
     public GameObject MessageBlob;
     public GameObject CenterOfGravity;
 
+    private Dictionary<string, GameObject> blobs = new Dictionary<string, GameObject>();
+
 	// Use this for initialization
 	void Start () {
 		
@@ -18,12 +20,26 @@ public class NodeBehaviour : MonoBehaviour {
 		
 	}
 
-    void NewMessage(byte[] data) {
-        if (data[0] != id) {
-            return;
-        } 
-
+    private void createMessageBlob(string data) {
         var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
+
+        blobs.Add(data, obj);
+    }
+
+    private void feedMessageBlob(string data) {
+        var obj = blobs[data];
+        obj.SendMessage("Feed", data);
+    }
+
+    void NewMessage(string data) {
+        if (blobs.ContainsKey(data))
+        {
+            feedMessageBlob(data);
+        }
+        else
+        {
+            createMessageBlob(data);
+        }
     }
 }
