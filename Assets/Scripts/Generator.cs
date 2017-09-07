@@ -6,7 +6,7 @@ using UnityEngine;
 public class Generator:MonoBehaviour
 {
 	public Modifier Modifier;
-    public MessageSender MessageSender;
+    public GameObject MessageSender;
 
     public void GenerateHex()
 	{
@@ -17,20 +17,9 @@ public class Generator:MonoBehaviour
 		Modifier.PrintMessage(hex);
 	}
 
-    public void StartSendHex(float interval, string data)
-    {
-        if (interval <= 0.0f) {
-            return;
-        }
-
-        MessageSender obj = Instantiate(MessageSender);
-        obj.Modifier = Modifier;
-        obj.SendMessage("Begin", interval);
-    }
-
-    public MessageSender createSender() {
-        MessageSender obj = Instantiate(MessageSender);
-        obj.Modifier = Modifier;
+    public GameObject createSender() {
+        GameObject obj = Instantiate(MessageSender);
+        obj.GetComponent<MessageSenderBehaviour>().Modifier = Modifier;        
         return obj;
     }
 }

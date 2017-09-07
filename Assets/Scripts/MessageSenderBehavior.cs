@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MessageSender : MonoBehaviour {
+public class MessageSenderBehaviour : MonoBehaviour {
     public Modifier Modifier;
 
     public string data;
