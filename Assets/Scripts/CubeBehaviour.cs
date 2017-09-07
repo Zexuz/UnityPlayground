@@ -5,8 +5,12 @@ using UnityEngine;
 public class CubeBehaviour : MonoBehaviour {
 
     public float ShrinkFactor = 0.1f;
+    public float GrowthRoof = 1000.0f;
+    public float GrowthFactor = 1.0f;
+    public float MaxSize = 5.0f;
 
     private float size = 1.0f;
+    private float messages = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +28,8 @@ public class CubeBehaviour : MonoBehaviour {
 	}
 
     void Feed(string data) {
-        size += 1.0f;
+        messages += 1;
+        float growth = System.Math.Min((float)messages*GrowthFactor, GrowthRoof);
+        size = (MaxSize-1.0f) * (growth / GrowthRoof) + 1.0f;        
     }
 }
