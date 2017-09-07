@@ -21,11 +21,11 @@ public class Modifier : MonoBehaviour
     {
         if (!_nodes.ContainsKey(messageString))
         {
-            var messageWeapper = new MsgWrapper(messageString);
+            var messageWeapper = new Messages(messageString);
             var gObj = Instantiate(GameObjectPrefab, new Vector3(), Quaternion.identity);
             _nodes[messageString] = new GameObjectNode(messageWeapper, gObj);
         }
-        _nodes[messageString].MsgWrapper.AddToList(new Message(LifeTime));
+        _nodes[messageString].Messages.Add(new MessageInfo(LifeTime));
         _nodes[messageString].GameObject.transform.localScale *= IncreseFactor;
     }
 
@@ -35,17 +35,21 @@ public class Modifier : MonoBehaviour
         foreach (var kvp in _nodes)
         {
             var gameObjectNode = kvp.Value;
-            gameObjectNode.MsgWrapper.Update();
-            var messageCount = gameObjectNode.MsgWrapper.Messages.Count;
+            var msgWrapper = gameObjectNode.Messages;
+            var messageCount = msgWrapper.Values.Count;
+            
+            msgWrapper.Update();
+            
             if (messageCount == 0)
                 keysToRemove.Add(kvp.Key);
 
-            if (gameObjectNode.GameObject.transform.localScale.magnitude < 0.5f)
+            var trans = gameObjectNode.GameObject.transform;
+            if (trans.localScale.magnitude < 0.5f)
                 keysToRemove.Add(kvp.Key);
 
             var factor = (messageCount * ShrinkFactor) - messageCount + 1;
             Debug.Log(factor);
-            gameObjectNode.GameObject.transform.localScale /= factor;
+            trans.localScale /= factor;
         }
 
         foreach (var key in keysToRemove)
@@ -59,56 +63,56 @@ public class Modifier : MonoBehaviour
 
 public class GameObjectNode
 {
-    public MsgWrapper MsgWrapper { get; private set; }
+    public Messages Messages { get; private set; }
     public GameObject GameObject { get; private set; }
 
-    public GameObjectNode(MsgWrapper msgWrapper, GameObject gameObject)
+    public GameObjectNode(Messages messages, GameObject gameObject)
     {
-        MsgWrapper = msgWrapper;
+        Messages = messages;
         GameObject = gameObject;
     }
 }
 
 
-public class MsgWrapper
+public class Messages
 {
     public string MessageString { get; private set; }
-    private List<Message> _messages;
+    private readonly List<MessageInfo> _values;
 
-    public List<Message> Messages
+    public List<MessageInfo> Values
     {
-        get { return _messages; }
+        get { return _values; }
     }
 
-    public MsgWrapper(string messageString)
+    public Messages(string messageString)
     {
         MessageString = messageString;
 
-        _messages = new List<Message>();
+        _values = new List<MessageInfo>();
     }
 
-    public void AddToList(Message message)
+    public void Add(MessageInfo messageInfo)
     {
-        _messages.Add(message);
+        _values.Add(messageInfo);
     }
 
     public void Update()
     {
-        for (int i = _messages.Count - 1; i >= 0; i--)
+        for (int i = _values.Count - 1; i >= 0; i--)
         {
-            if (_messages[i].ShouldDestory())
-                _messages.RemoveAt(i);
+            if (_values[i].ShouldDestory())
+                _values.RemoveAt(i);
         }
     }
 }
 
-public class Message
+public class MessageInfo
 {
     public DateTime Created { get; private set; }
     public int LifeTime { get; private set; }
 
 
-    public Message(int lifeTime)
+    public MessageInfo(int lifeTime)
     {
         Created = DateTime.Now;
         LifeTime = lifeTime;
