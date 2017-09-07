@@ -55,7 +55,7 @@
     <Compile Include="Assets\Scripts\Attract.cs" />
     <Compile Include="Assets\Scripts\Generator.cs" />
     <Compile Include="Assets\Scripts\GeneratorEditor.cs" />
-    <Compile Include="Assets\Scripts\MessageSender.cs" />
+    <Compile Include="Assets\Scripts\MessageSenderBehavior.cs" />
     <Compile Include="Assets\Scripts\Modifier.cs" />
     <Compile Include="Assets\Scripts\Stabilizatior.cs" />
     <Reference Include="UnityEngine.UI">
