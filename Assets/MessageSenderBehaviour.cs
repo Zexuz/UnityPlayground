@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MessageSender : MonoBehaviour {
+public class MessageSenderBehaviour : MonoBehaviour
+{
     public Modifier Modifier;
 
     public string data;
@@ -11,7 +12,8 @@ public class MessageSender : MonoBehaviour {
     private float time = 0.0f;
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         time += Time.deltaTime;
         if (interval > 0.0f)
         {

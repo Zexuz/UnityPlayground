@@ -10,7 +10,7 @@ public class GeneratorEditor : Editor
     string data = "0000000000000000";
     float interval = 0.0f;
 
-    List<MessageSender> senders = new List<MessageSender>();
+    List<GameObject> senders = new List<GameObject>();
 
     public override void OnInspectorGUI()
 
@@ -31,11 +31,12 @@ public class GeneratorEditor : Editor
 
         }
 
-        List<MessageSender> toRemove = new List<MessageSender>();
-        foreach(MessageSender sender in senders)
+        List<GameObject> toRemove = new List<GameObject>();
+        foreach(GameObject sender in senders)
         {
-            sender.data = EditorGUILayout.TextField("Data", sender.data);
-            sender.interval = EditorGUILayout.FloatField("Interval", sender.interval);
+            MessageSenderBehaviour script = sender.GetComponent<MessageSenderBehaviour>();
+            script.data = EditorGUILayout.TextField("Data", script.data);
+            script.interval = EditorGUILayout.FloatField("Interval", script.interval);
 
             if (GUILayout.Button("Destroy"))
             {
@@ -43,7 +44,7 @@ public class GeneratorEditor : Editor
             }
         }
 
-        foreach (MessageSender sender in toRemove) {
+        foreach (GameObject sender in toRemove) {
             senders.Remove(sender);
             Destroy(sender);
         }
