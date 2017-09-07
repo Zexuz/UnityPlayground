@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodeBehaviour : MonoBehaviour {
 
-    public int id;
+    public byte id;
     public GameObject MessageBlob;
     public GameObject CenterOfGravity;
 
@@ -18,7 +18,11 @@ public class NodeBehaviour : MonoBehaviour {
 		
 	}
 
-    void NewMessage(string data) {
+    void NewMessage(byte[] data) {
+        if (data[0] != id) {
+            return;
+        } 
+
         var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
     }
