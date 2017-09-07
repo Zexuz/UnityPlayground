@@ -27,4 +27,10 @@ public class Generator:MonoBehaviour
         obj.Modifier = Modifier;
         obj.SendMessage("Begin", interval);
     }
+
+    public MessageSender createSender() {
+        MessageSender obj = Instantiate(MessageSender);
+        obj.Modifier = Modifier;
+        return obj;
+    }
 }
