@@ -10,6 +10,7 @@ public class CubeBehaviour : MonoBehaviour {
     public float MaxSize = 5.0f;
 
     private float size = 1.0f;
+    private float targetSize = 1.0f;
     private float messages = 1.0f;
 
 	// Use this for initialization
@@ -27,9 +28,25 @@ public class CubeBehaviour : MonoBehaviour {
         } 
 	}
 
+    IEnumerator Grow() {
+        while (size < targetSize)
+        {
+            float magnitude = targetSize - size;
+            size = size + magnitude * 0.1f;
+
+            if (magnitude < 0.001) {
+                break;
+            }
+
+            yield return new WaitForSeconds(0.016f);
+        }
+    }
+
     void Feed(string data) {
         messages += 1;
         float growth = System.Math.Min((float)messages*GrowthFactor, GrowthRoof);
-        size = (MaxSize-1.0f) * (growth / GrowthRoof) + 1.0f;        
+        targetSize = (MaxSize-1.0f) * (growth / GrowthRoof) + 1.0f;
+
+        StartCoroutine("Grow");
     }
 }
