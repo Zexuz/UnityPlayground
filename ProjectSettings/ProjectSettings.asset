@@ -10,8 +10,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: DisplayInfoV1
+  companyName: TESTCOMPAY
+  productName: Product name
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -511,11 +511,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: DisplayInfoV1
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: TESTCOMPAY
+  metroCertificateIssuer: TESTCOMPAY
+  metroCertificateNotAfter: 00cc0e0da047d401
   metroApplicationDescription: DisplayInfoV1
   wsaImages: {}
   metroTileShortName: DisplayInfoV1
