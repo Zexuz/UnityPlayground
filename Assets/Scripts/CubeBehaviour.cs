@@ -16,17 +16,14 @@ public class CubeBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Math.Abs(size - targetSize) > 0.1)
+        targetSize -= Time.deltaTime * ShrinkFactor;
+
+        if (Math.Abs(size - targetSize) > 0.0001)
         {
             float magnitude = targetSize - size;
-            size = size + magnitude * 0.1f;
-        }
-        else
-        {
-            size -= Time.deltaTime * ShrinkFactor;
-            targetSize = size;
-            transform.localScale = new Vector3(size, size, size);
+            size += magnitude * Time.deltaTime;
 
+            transform.localScale = new Vector3(size, size, size);
             if (size < 0.0f)
             {
                 Destroy(gameObject);
