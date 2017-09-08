@@ -29,6 +29,12 @@ public class NodeBehaviour : MonoBehaviour {
 
     private void feedMessageBlob(string data) {
         var obj = blobs[data];
+        if (obj == null) // the object has been destroyed
+        {
+            blobs.Remove(data);
+            createMessageBlob(data);
+            return;    
+        }
         obj.SendMessage("Feed", data);
     }
 
