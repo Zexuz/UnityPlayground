@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class CubeBehaviour : MonoBehaviour {
@@ -13,40 +12,32 @@ public class CubeBehaviour : MonoBehaviour {
     private float targetSize = 1.0f;
     private float messages = 1.0f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        size -= Time.deltaTime * ShrinkFactor;
-        transform.localScale = new Vector3(size, size, size);
-
-        if (size < 0.0f) {
-            Destroy(gameObject);
-        } 
-	}
-
-    IEnumerator Grow() {
-        while (size < targetSize)
+  
+    // Update is called once per frame
+    void Update()
+    {
+        if (Math.Abs(size - targetSize) > 0.1)
         {
             float magnitude = targetSize - size;
             size = size + magnitude * 0.1f;
+        }
+        else
+        {
+            size -= Time.deltaTime * ShrinkFactor;
+            targetSize = size;
+            transform.localScale = new Vector3(size, size, size);
 
-            if (magnitude < 0.001) {
-                break;
+            if (size < 0.0f)
+            {
+                Destroy(gameObject);
             }
-
-            yield return new WaitForSeconds(0.016f);
         }
     }
 
-    void Feed(string data) {
+    void Feed(string data)
+    {
         messages += 1;
-        float growth = System.Math.Min((float)messages*GrowthFactor, GrowthRoof);
-        targetSize = (MaxSize-1.0f) * (growth / GrowthRoof) + 1.0f;
-
-        StartCoroutine("Grow");
+        float growth = System.Math.Min((float) messages * GrowthFactor, GrowthRoof);
+        targetSize = (MaxSize - 1.0f) * (growth / GrowthRoof) + 1.0f;
     }
 }

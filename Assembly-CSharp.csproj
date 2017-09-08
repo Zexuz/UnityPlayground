@@ -53,11 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Attract.cs" />
+    <Compile Include="Assets\Scripts\CubeBehaviour.cs" />
     <Compile Include="Assets\Scripts\Generator.cs" />
     <Compile Include="Assets\Scripts\GeneratorEditor.cs" />
     <Compile Include="Assets\Scripts\MessageSenderBehaviour.cs" />
     <Compile Include="Assets\Scripts\Modifier.cs" />
-    <Compile Include="Assets\Scripts\Stabilizatior.cs" />
+    <Compile Include="Assets\Scripts\NodeBehaviour.cs" />
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
