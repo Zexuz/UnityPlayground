@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 135063195999973974}
   - component: {fileID: 54718533931428362}
   - component: {fileID: 114931445389300900}
+  - component: {fileID: 114804537895812578}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -85,7 +86,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -101,7 +101,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -119,7 +118,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -135,7 +133,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -199,6 +196,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 20304280800666026, guid: ac2c37eae284ac9478350428cdad3c1b, type: 2}
+--- !u!114 &114804537895812578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465577827633610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0207e4e0c541c44cabaf6232cb697e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShrinkFactor: 0.2
+  GrowthRoof: 1000
+  GrowthFactor: 1
+  MaxSize: 5
 --- !u!114 &114931445389300900
 MonoBehaviour:
   m_ObjectHideFlags: 1
