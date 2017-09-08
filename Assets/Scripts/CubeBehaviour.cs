@@ -8,6 +8,8 @@ public class CubeBehaviour : MonoBehaviour {
     public float GrowthFactor = 1.0f;
     public float MaxSize = 5.0f;
 
+    public string data;
+
     private float size = 1.0f;
     private float targetSize = 1.0f;
     private float messages = 1.0f;
@@ -31,8 +33,8 @@ public class CubeBehaviour : MonoBehaviour {
         }
     }
 
-    void Feed(string data)
-    {
+    public void Feed(string data)
+    {        
         messages += 1;
         float growth = System.Math.Min((float) messages * GrowthFactor, GrowthRoof);
         targetSize = (MaxSize - 1.0f) * (growth / GrowthRoof) + 1.0f;
