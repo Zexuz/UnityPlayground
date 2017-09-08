@@ -23,6 +23,7 @@ public class NodeBehaviour : MonoBehaviour {
     private void createMessageBlob(string data) {
         var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
+        
 
         blobs.Add(data, obj);
     }

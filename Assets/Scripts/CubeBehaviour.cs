@@ -36,5 +36,10 @@ public class CubeBehaviour : MonoBehaviour {
         messages += 1;
         float growth = System.Math.Min((float) messages * GrowthFactor, GrowthRoof);
         targetSize = (MaxSize - 1.0f) * (growth / GrowthRoof) + 1.0f;
+        
+        // Glow
+
+        GetComponent<Renderer>().material.color = new Color(206, 38, 38, 1f);
+        
     }
 }
