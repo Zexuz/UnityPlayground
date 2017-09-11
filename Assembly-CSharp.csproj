@@ -56,6 +56,10 @@
      <Compile Include="Assets\Scripts\CubeBehaviourEditor.cs" />
      <Compile Include="Assets\Scripts\Generator.cs" />
      <Compile Include="Assets\Scripts\GeneratorEditor.cs" />
+     <Compile Include="Assets\Scripts\Glow.cs" />
+     <Compile Include="Assets\Scripts\GlowEditor.cs" />
+     <Compile Include="Assets\Scripts\GlowGenerator.cs" />
+     <Compile Include="Assets\Scripts\GlowMod.cs" />
      <Compile Include="Assets\Scripts\MessageSenderBehaviour.cs" />
      <Compile Include="Assets\Scripts\Modifier.cs" />
      <Compile Include="Assets\Scripts\NodeBehaviour.cs" />
