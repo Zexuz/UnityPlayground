@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1465577827633610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.0025, y: 0.0025, z: 0.0025}
   m_Children:
   - {fileID: 4998909209978522}
   m_Father: {fileID: 0}
@@ -86,7 +86,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -102,7 +101,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -120,7 +118,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -136,7 +133,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -211,10 +207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f021910725b472383513e6634bc3e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShrinkFactor: 0.2
-  GrowthRoof: 1000
-  GrowthFactor: 1
-  MaxSize: 50
+  ChangeFactor: 0.01
+  ShrinkFactor: 0.005
+  GrowthFactor: 0.01
+  MaxSize: 0.025
   data: 
 --- !u!114 &114931445389300900
 MonoBehaviour:

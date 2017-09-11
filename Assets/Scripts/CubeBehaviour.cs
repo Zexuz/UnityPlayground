@@ -13,6 +13,10 @@ public class CubeBehaviour : MonoBehaviour {
     private float size = 1.0f;
     private float targetSize = 1.0f;
 
+    private void Start()
+    {
+        size = transform.localScale.x;
+    }
   
     // Update is called once per frame
     void Update()
