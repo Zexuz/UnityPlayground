@@ -10,21 +10,12 @@ public class NodeBehaviour : MonoBehaviour {
 
     private Dictionary<string, GameObject> blobs = new Dictionary<string, GameObject>();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void RemoveAllChilds()
     {
-        if (gameObject.transform.childCount == 2)
+        foreach (Transform child in gameObject.transform)
         {
-            return;
+            if(!child.CompareTag(Tags.Cube))continue;
+            Destroy(child.gameObject);
         }
         
         

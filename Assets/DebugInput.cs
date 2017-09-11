@@ -1,48 +1,94 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using HoloToolkit.Unity.InputModule;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class DebugInput : MonoBehaviour, IHoldHandler, IInputHandler
+public class DebugInput : MonoBehaviour, IInputClickHandler
 {
     public TextMesh AnchorDebugText;
-    private string _debugTextHold = "";
-    private string _debugTextInput = "";
+    private int _nrOfClicks;
+    public Generator Generator;
 
     void Update()
     {
         UpdateText();
+    }
+	
+    private void RemoveAllMessageSender()
+    {
+        var action = new Action(() =>
+        {
+            var messageSenders = GameObject.FindGameObjectsWithTag(Tags.MessageSenderHolder);
+
+            foreach (var sender in messageSenders)
+            {
+                Destroy(sender.gameObject);
+            }
+        });
+
+        StartCoroutine(Wait(0.0f, action));
+    }
+	
+    private void RemoveAllCubes()
+    {
+        var action = new Action(() =>
+        {
+            var nodes = GameObject.FindGameObjectsWithTag(Tags.Node);
+
+            foreach (var node in nodes)
+            {
+                var nodeBehaviour = node.GetComponent<NodeBehaviour>();
+                nodeBehaviour.RemoveAllChilds();
+            }
+        });
+
+        StartCoroutine(Wait(0.1f, action));
+    }
+	
+    IEnumerator Wait(float time, Action action)
+    {
+        yield return new WaitForSeconds(time);
+        action();
     }
 
     private void UpdateText()
     {
         if (AnchorDebugText != null)
             AnchorDebugText.text = string.Format(
-                "Hold: {0}\nInput: {1}", _debugTextHold, _debugTextInput);
+                "Clicks: {0}", _nrOfClicks);
     }
 
-    public void OnHoldStarted(HoldEventData eventData)
+    private void GenerateMesseageSenders(int nr)
     {
-        _debugTextHold = "OnHoldStarted";
-    }
+       var action = new Action(() =>
+       {
+           for (int i = 0; i < nr; i++)
+           {
+               Generator.CreateSender(RandomString(1), Random.value);
+           }
+       } );
 
-    public void OnHoldCompleted(HoldEventData eventData)
-    {
-        _debugTextHold = "OnHoldCompleted";
+        StartCoroutine(Wait(0.2f, action));
     }
+    
 
-    public void OnHoldCanceled(HoldEventData eventData)
+    public void OnInputClicked(InputClickedEventData eventData)
     {
-        _debugTextHold = "OnHoldCanceled";
+        RemoveAllMessageSender();
+        RemoveAllCubes();
+        GenerateMesseageSenders(100);
+        _nrOfClicks++;
     }
-
-    public void OnInputUp(InputEventData eventData)
+    
+    private static System.Random random = new System.Random();
+    private static string RandomString(int length)
     {
-        _debugTextInput = "OnInputUp";
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return new string(Enumerable.Repeat(chars, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
     }
-
-    public void OnInputDown(InputEventData eventData)
-    {
-        _debugTextInput = "OnInputDown";
-    }
+    
 }
