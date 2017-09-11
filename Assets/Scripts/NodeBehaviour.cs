@@ -5,6 +5,7 @@ using UnityEngine;
 public class NodeBehaviour : MonoBehaviour {
 
     public byte id;
+    public Camera Camera;
     public GameObject MessageBlob;
     public GameObject CenterOfGravity;
 
@@ -23,6 +24,7 @@ public class NodeBehaviour : MonoBehaviour {
     private void createMessageBlob(string data) {
         var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
+        obj.GetComponent<Attract>().Camera = Camera;
 
         blobs.Add(data, obj);
     }
