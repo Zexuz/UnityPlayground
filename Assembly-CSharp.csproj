@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Attract.cs" />
     <Compile Include="Assets\Scripts\CubeBehaviour.cs" />
+    <Compile Include="Assets\Scripts\CubeBehaviourEditor.cs" />
     <Compile Include="Assets\Scripts\Generator.cs" />
     <Compile Include="Assets\Scripts\GeneratorEditor.cs" />
     <Compile Include="Assets\Scripts\MessageSenderBehaviour.cs" />
