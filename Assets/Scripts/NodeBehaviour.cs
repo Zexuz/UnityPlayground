@@ -20,10 +20,22 @@ public class NodeBehaviour : MonoBehaviour {
 		
 	}
 
+    public void RemoveAllChilds()
+    {
+        if (gameObject.transform.childCount == 2)
+        {
+            return;
+        }
+        
+        
+    }
+
     private void createMessageBlob(string data) {
         var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
 
+        obj.transform.parent = gameObject.transform;
+        
         blobs.Add(data, obj);
     }
 

@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class StartScript : MonoBehaviour
 {
-
-
 	public Generator Generator;
+	public GameObject GameObjectHolder;
+	
+	//make a reset button for hololens
 	
 	// Use this for initialization
 	void Start () {
-		
+
+		GameObjectHolder = new GameObject
+		{
+			name = "MessageSenderHolder"
+		};
+
 		Debug.Log("start");
 		for (int i = 0; i < 100; i++)
 		{
@@ -19,11 +25,12 @@ public class StartScript : MonoBehaviour
 			MessageSenderBehaviour script = messageSender.GetComponent<MessageSenderBehaviour>();
 			script.data = RandomString(1);
 			script.interval = Random.value;
+			messageSender.transform.parent = GameObjectHolder.transform;
 		}
 	}
 	
 	private static System.Random random = new System.Random();
-	public static string RandomString(int length)
+	private static string RandomString(int length)
 	{
 		const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		return new string(Enumerable.Repeat(chars, length)
