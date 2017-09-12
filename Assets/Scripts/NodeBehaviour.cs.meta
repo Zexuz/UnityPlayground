@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: 5e281a1ac71ed2946aadbd35d57d472b
-timeCreated: 1504795695
+timeCreated: 1505224371
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - MessageBlob: {instanceID: 0}
+  - CenterOfGravity: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
