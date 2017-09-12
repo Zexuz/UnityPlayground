@@ -1,16 +1,21 @@
 ﻿using System.Linq;
+using HoloToolkit.Unity;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class StartScript : MonoBehaviour
 {
-    public Generator _generator;
+    public Generator Generator;
     // Use this for initialization
     void Start()
     {
+        var tts = gameObject.GetComponent<TextToSpeechManager>();
+        tts.SpeakText("Ognak Gnouk");
+
+        
         for (int i = 0; i < 100; i++)
         {
-            _generator.CreateSender(RandomString(1), Random.value);
+            Generator.CreateSender(RandomString(1), Random.value);
         }
     }
 

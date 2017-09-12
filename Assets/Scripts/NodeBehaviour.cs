@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class NodeBehaviour : MonoBehaviour {
@@ -24,7 +23,6 @@ public class NodeBehaviour : MonoBehaviour {
     private void createMessageBlob(string data) {
         var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
-
         obj.transform.parent = gameObject.transform;
         
         blobs.Add(data, obj);
