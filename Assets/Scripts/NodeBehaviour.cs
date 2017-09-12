@@ -25,6 +25,7 @@ public class NodeBehaviour : MonoBehaviour {
         var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
         obj.GetComponent<Attract>().Camera = Camera;
+        obj.GetComponent<CubeBehaviour>().Camera = Camera;
 
         blobs.Add(data, obj);
     }
