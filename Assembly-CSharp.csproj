@@ -52,7 +52,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DebugInput.cs" />
     <Compile Include="Assets\Prefabs\HoloToolkit\CrossPlatform\Scripts\MetroHandleRef.cs" />
     <Compile Include="Assets\Prefabs\HoloToolkit\CrossPlatform\Scripts\Reflection\ReflectionExtensions.cs" />
     <Compile Include="Assets\Prefabs\HoloToolkit\CrossPlatform\Scripts\Reflection\TypeUtils.cs" />
@@ -316,13 +315,14 @@
     <Compile Include="Assets\Scripts\Attract.cs" />
     <Compile Include="Assets\Scripts\CubeBehaviour.cs" />
     <Compile Include="Assets\Scripts\CubeBehaviourEditor.cs" />
+    <Compile Include="Assets\Scripts\DebugInput.cs" />
     <Compile Include="Assets\Scripts\Generator.cs" />
     <Compile Include="Assets\Scripts\GeneratorEditor.cs" />
     <Compile Include="Assets\Scripts\MessageSenderBehaviour.cs" />
     <Compile Include="Assets\Scripts\Modifier.cs" />
     <Compile Include="Assets\Scripts\NodeBehaviour.cs" />
-    <Compile Include="Assets\StartScript.cs" />
-    <Compile Include="Assets\Tags.cs" />
+    <Compile Include="Assets\Scripts\StartScript.cs" />
+    <Compile Include="Assets\Scripts\Tags.cs" />
     <None Include="Assets\Prefabs\HoloToolkit\Utilities\Shaders\Obsolete\UnlitConfigurable.shader" />
     <None Include="Assets\Prefabs\HoloToolkit\SpatialUnderstanding\Materials\SpatialUnderstandingSurface.shader" />
     <None Include="Assets\Prefabs\HoloToolkit\SpatialMapping\Shaders\SpatialMappingTap.shader" />
