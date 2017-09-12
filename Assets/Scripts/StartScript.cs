@@ -9,9 +9,10 @@ public class StartScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        #if !UNITY_EDITOR
         var tts = gameObject.GetComponent<TextToSpeechManager>();
         tts.SpeakText("Ognak Gnouk");
-
+        #endif
         
         for (int i = 0; i < 100; i++)
         {

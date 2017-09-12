@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HudBehavior.cs" />
     <Compile Include="Assets\Prefabs\HoloToolkit\CrossPlatform\Scripts\MetroHandleRef.cs" />
     <Compile Include="Assets\Prefabs\HoloToolkit\CrossPlatform\Scripts\Reflection\ReflectionExtensions.cs" />
     <Compile Include="Assets\Prefabs\HoloToolkit\CrossPlatform\Scripts\Reflection\TypeUtils.cs" />
