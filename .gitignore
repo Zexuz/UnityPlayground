@@ -1,0 +1,8 @@
+obj/
+UWP/
+QCAR
+.vscode/
+Packages/
+*.sln
+Library
+*.csproj
