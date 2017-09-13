@@ -6,3 +6,4 @@ Packages/
 *.sln
 Library
 *.csproj
+Temp/
