@@ -40,8 +40,8 @@ public class CubeBehaviour : MonoBehaviour {
             }
         }
 
-        const float MIN_DISTANCE = 1.0f;
-        const float MAX_DISTANCE = 1.05f;
+        const float MIN_DISTANCE = 0.7f;
+        const float MAX_DISTANCE = 0.75f;
 
         float distance = Vector3.Distance(Camera.gameObject.transform.position, transform.position);             
         float alpha = Mathf.Clamp((distance - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE), 0.0f, 1.0f);
