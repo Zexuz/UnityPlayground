@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class NodeBehaviour : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class NodeBehaviour : MonoBehaviour {
     public Camera Camera;
     public GameObject MessageBlob;
     public GameObject CenterOfGravity;
+    
 
     private Dictionary<string, GameObject> blobs = new Dictionary<string, GameObject>();
 
@@ -51,4 +53,6 @@ public class NodeBehaviour : MonoBehaviour {
             createMessageBlob(data);
         }
     }
+
+    
 }

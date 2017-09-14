@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class CubeBehaviour : MonoBehaviour {
 
+
     public Camera Camera;
     public Text Text;
+
+    private Glow glow;
 
 
     public float ChangeFactor = 1.0f;
@@ -13,19 +16,23 @@ public class CubeBehaviour : MonoBehaviour {
     public float GrowthFactor = 0.1f;
     public float MaxSize = 5.0f;
 
+    public float fadeSpeed = 0.3f;
+
     public string data;
 
     private float size = 1.0f;
     private float targetSize = 1.0f;
 
-    private void Start()
-    {
+
+    void Start() {
+        glow = new Glow(gameObject.GetComponent<Renderer>());
         size = transform.localScale.x;
     }
-  
+
     // Update is called once per frame
     void Update()
     {
+        glow.Update(Time.deltaTime);
         targetSize -= Time.deltaTime * ShrinkFactor;
 
         if (Math.Abs(size - targetSize) > 0.0001)
@@ -40,6 +47,7 @@ public class CubeBehaviour : MonoBehaviour {
             }
         }
 
+
         const float MIN_DISTANCE = 0.7f;
         const float MAX_DISTANCE = 0.75f;
 
@@ -49,11 +57,16 @@ public class CubeBehaviour : MonoBehaviour {
         Color c = gameObject.GetComponent<Renderer>().material.GetColor("_Color");
         c.a = alpha;
         gameObject.GetComponent<Renderer>().material.SetColor("_Color", c);                
+
     }
 
     public void Feed(string data)
     {
         targetSize += GrowthFactor;
-        targetSize = System.Math.Min(targetSize, MaxSize);        
+        targetSize = System.Math.Min(targetSize, MaxSize);
+        if(glow != null) {
+            glow.InitGlow();
+        }
+        
     }
 }

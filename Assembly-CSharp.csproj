@@ -95,6 +95,7 @@
      <Compile Include="Assets\Scripts\CubeBehaviourEditor.cs" />
      <Compile Include="Assets\Scripts\Generator.cs" />
      <Compile Include="Assets\Scripts\GeneratorEditor.cs" />
+     <Compile Include="Assets\Scripts\Glow.cs" />
      <Compile Include="Assets\Scripts\MessageSenderBehaviour.cs" />
      <Compile Include="Assets\Scripts\Modifier.cs" />
      <Compile Include="Assets\Scripts\NodeBehaviour.cs" />
@@ -147,6 +148,7 @@
      <None Include="Assets\HologramShader.shader" />
      <None Include="Assets\StreamingAssets\QCAR\StonesAndChips.xml" />
      <None Include="Assets\license_3rdpartynotice.txt" />
+     <None Include="Assets\HoloToolkit\UI\Fonts\LICENSE.txt" />
      <None Include="Assets\StreamingAssets\Vuforia\Vuforia.xml" />
      <None Include="Assets\Vuforia\Editor\WebcamProfiles\profiles.xml" />
      <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
@@ -158,6 +160,7 @@
      <None Include="Assets\Vuforia\Shaders\BrightTexture.shader" />
      <None Include="Assets\SamplesResources\VuMark\Shaders\VuMark_Custom_OverlayMesh.shader" />
      <None Include="Assets\StreamingAssets\Vuforia\VoloTruckTest.xml" />
+     <None Include="Assets\HoloToolkit\License.txt" />
      <None Include="Assets\Editor\Vuforia\Vuforia\authoringinfo.xml" />
      <None Include="Assets\Vuforia\Shaders\Text3D.shader" />
  <Reference Include="UnityEngine.UI">
