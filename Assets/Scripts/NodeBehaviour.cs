@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class NodeBehaviour : MonoBehaviour {
@@ -11,15 +10,16 @@ public class NodeBehaviour : MonoBehaviour {
 
     private Dictionary<string, GameObject> blobs = new Dictionary<string, GameObject>();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void RemoveAllChilds()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            if(!child.CompareTag(Tags.Cube))continue;
+            Destroy(child.gameObject);
+        }
+        
+        
+    }
 
     private void createMessageBlob(string data) {
         var obj = Instantiate(MessageBlob);
@@ -27,6 +27,8 @@ public class NodeBehaviour : MonoBehaviour {
         obj.GetComponent<Attract>().Camera = Camera;
         obj.GetComponent<CubeBehaviour>().Camera = Camera;
 
+        obj.transform.parent = gameObject.transform;
+        
         blobs.Add(data, obj);
     }
 

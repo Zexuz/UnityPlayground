@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
+
 [CustomEditor(typeof(Generator))]
 public class GeneratorEditor : Editor
 
@@ -16,13 +17,13 @@ public class GeneratorEditor : Editor
     List<GameObject> senders = new List<GameObject>();
 
     public override void OnInspectorGUI()
-
     {
+
         DrawDefaultInspector();
 
         res = GUILayout.TextField(res, 25);
-        
-        Generator generator = (Generator)target;
+
+        Generator generator = (Generator) target;
         if (GUILayout.Button("Send"))
         {
             generator.SendHex(res);
@@ -30,7 +31,8 @@ public class GeneratorEditor : Editor
 
         if (GUILayout.Button("Create Sender"))
         {
-            senders.Add(generator.createSender());
+            var messageSender = generator.CreateSender();
+            senders.Add(messageSender);
         }
 
         number = EditorGUILayout.IntField(number);
@@ -38,14 +40,11 @@ public class GeneratorEditor : Editor
         {
             for (int i = 0; i < number; i++)
             {
-                var messageSender = generator.createSender();
-                MessageSenderBehaviour script = messageSender.GetComponent<MessageSenderBehaviour>();
-                script.data = RandomString(1);
-                script.interval = Random.value;
+                var messageSender = generator.CreateSender(RandomString(1),Random.value);
                 senders.Add(messageSender);
             }
         }
-        
+
 
         List<GameObject> toRemove = new List<GameObject>();
         foreach (GameObject sender in senders)
@@ -66,8 +65,9 @@ public class GeneratorEditor : Editor
             Destroy(sender);
         }
     }
-    
+
     private static System.Random random = new System.Random();
+
     public static string RandomString(int length)
     {
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
