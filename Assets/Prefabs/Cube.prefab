@@ -111,12 +111,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
-  Text: {fileID: 0}
-  ChangeFactor: 0.01
+  ChangeFactor: 0.5
   ShrinkFactor: 0.005
   GrowthFactor: 0.01
   MaxSize: 0.025
-  data: 
+  RemoveTime: 1
+  info1: 0
+  info2: 0
+  dtMsg: 0
+  timeLeftInInterval: 0
+  messagesInInterval: 0
+  Data: 
 --- !u!114 &114931445389300900
 MonoBehaviour:
   m_ObjectHideFlags: 1

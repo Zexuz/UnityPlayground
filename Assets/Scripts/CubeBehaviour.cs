@@ -11,9 +11,12 @@ public class CubeBehaviour : MonoBehaviour {
     public Camera Camera;
 
     public float ChangeFactor = 1.0f;
-    public float ShrinkFactor = 0.1f;
-    public float GrowthFactor = 0.1f;
     public float MaxSize = 5.0f;
+
+    private const float INTERVAL = 2.0f;
+    private float dtMsg = 0.0f;
+    private float timeLeftInInterval = 0.0f;
+    private int messagesInInterval = 0;
 
     [HideInInspector]
     public string Data;
@@ -41,23 +44,39 @@ public class CubeBehaviour : MonoBehaviour {
 
     private void Start()
     {
+        timeLeftInInterval = INTERVAL;
+        dtMsg = 0.0f;       
         _messageTimes = new List<DateTime>();
         size = transform.localScale.x;
+        targetSize = size;
     }
   
     // Update is called once per frame
     void Update()
     {
+        timeLeftInInterval -= Time.deltaTime;
+        if (timeLeftInInterval < 0.0)
+        {
+            if (messagesInInterval > 0) {
+                dtMsg = (INTERVAL + Math.Abs(timeLeftInInterval)) / messagesInInterval;
+                targetSize = Mathf.Clamp(0.1f / dtMsg, 0.0f, 1.0f) * MaxSize;                
+            }
+            else {
+                targetSize = 0.0f;
+            }
+            timeLeftInInterval = INTERVAL;
+            messagesInInterval = 0;
+        }
+        
         transform.position = new Vector3(transform.position.x,transform.position.y,0);
-        targetSize -= Time.deltaTime * ShrinkFactor;
-
+        
         if (Math.Abs(size - targetSize) > 0.0001)
         {
             float magnitude = targetSize - size;
             size += ChangeFactor * magnitude * Time.deltaTime;
 
             transform.localScale = new Vector3(size, size, size);
-            if (size < 0.0f)
+            if (size < 0.001f)
             {
                 Destroy(gameObject);
             }
@@ -82,11 +101,11 @@ public class CubeBehaviour : MonoBehaviour {
         
         if (_messageTimes.Count >= maxMessages)
             _messageTimes.RemoveRange(0, _messageTimes.Count - (maxMessages - 1));
-
-        _messageTimes.Add(DateTime.Now);
         
-        Data = data;
-        targetSize += GrowthFactor;
-        targetSize = System.Math.Min(targetSize, MaxSize);        
+        _messageTimes.Add(DateTime.Now);
+
+        messagesInInterval += 1;
+
+        Data = data; 
     }
 }
