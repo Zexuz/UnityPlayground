@@ -5,20 +5,12 @@ using UnityEngine;
 
 public class Modifier : MonoBehaviour
 {
-    public GameObject Node;
-
-    private void Start()
-    {
-        
-    }
-
     public void PrintMessage(string messageString)
     {
-        Node.SendMessage("NewMessage", messageString);        
-    }
-
-    private void Update()
-    {
-    
+        var nodes = GameObject.FindGameObjectsWithTag(Tags.Node);
+        foreach (var node in nodes)
+        {
+            node.SendMessage("NewMessage", messageString);        
+        }
     }
 }
