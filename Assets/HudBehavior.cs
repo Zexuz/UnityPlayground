@@ -56,9 +56,10 @@ public class HudBehavior : MonoBehaviour
         
         
         var rows = data.Split('\n');
+        var random = new System.Random();
         for (int i = 0; i < rows.Length; i++)
         {
-            var randomNr = new System.Random().Next(0, 16);
+            var randomNr = random.Next(0, 16);
             randomNr += randomNr / 2;
 
             var row = rows[i];
