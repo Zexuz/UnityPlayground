@@ -77,6 +77,9 @@ public class CubeBehaviour : MonoBehaviour {
     public void Feed(string data)
     {
         var maxMessages = 10;
+        if(_messageTimes == null)
+            _messageTimes =  new List<DateTime>();
+        
         if (_messageTimes.Count >= maxMessages)
             _messageTimes.RemoveRange(0, _messageTimes.Count - (maxMessages - 1));
 
