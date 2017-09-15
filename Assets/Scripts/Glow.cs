@@ -24,7 +24,8 @@ public class Glow {
 	public Glow(Renderer obj) {
 		this.obj = obj;
 		color = obj.material.color;
-		fadeColor = new Color(0.92f,0.92f,0.92f);
+		//obj.material.color = Color.blue;
+		fadeColor = new Color(103f/256f,204f/256f,240f/256f);
 		direction = 1;		
 		
 		rSpeed = ((fadeColor.r - color.r) * 2) / glowDuration;
@@ -39,7 +40,7 @@ public class Glow {
 
 	// Update is called once per frame
 	public void Update (float deltaTime) {
-		if(animating){
+		if(animating && obj){
 			glow(deltaTime);
 		} 
 	}
@@ -59,7 +60,6 @@ public class Glow {
 			direction = -1;
 		} else {
 			resetAnimation();
-			
 		}
 	}
 
@@ -73,17 +73,15 @@ public class Glow {
 	}
 
 	public void InitGlow() {
-		if(animating) {
-			if(direction < 0) {
-				timeElapsed = glowDuration - timeElapsed;
-			}
-		} else {
+
+		if(!animating) {
 			r = color.r;
 			g = color.g;
 			b = color.b;
-		}
 
-		direction = 1;
-		animating = true;
+			direction = 1;
+			animating = true;
+		}
+		
 	}
 }
