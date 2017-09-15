@@ -22,13 +22,13 @@ public class NodeBehaviour : MonoBehaviour {
     }
 
     private void createMessageBlob(string data) {
-        var obj = Instantiate(MessageBlob, transform);
+        var obj = Instantiate(MessageBlob);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
         obj.GetComponent<Attract>().Camera = Camera;
         obj.GetComponent<CubeBehaviour>().Camera = Camera;
 
-        obj.transform.parent = gameObject.transform;
-        
+        obj.transform.position = gameObject.transform.position;
+
         blobs.Add(data, obj);
     }
 
