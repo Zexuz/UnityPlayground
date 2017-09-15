@@ -116,6 +116,7 @@ MonoBehaviour:
   ShrinkFactor: 0.005
   GrowthFactor: 0.01
   MaxSize: 0.025
+  fadeSpeed: 0.3
   data: 
 --- !u!114 &114931445389300900
 MonoBehaviour:
