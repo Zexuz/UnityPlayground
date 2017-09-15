@@ -22,7 +22,7 @@ public class NodeBehaviour : MonoBehaviour {
     }
 
     private void createMessageBlob(string data) {
-        var obj = Instantiate(MessageBlob);
+        var obj = Instantiate(MessageBlob, transform);
         obj.GetComponent<Attract>().attractedTo = CenterOfGravity;
         obj.GetComponent<Attract>().Camera = Camera;
         obj.GetComponent<CubeBehaviour>().Camera = Camera;
