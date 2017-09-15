@@ -72,8 +72,6 @@ public class CubeBehaviour : MonoBehaviour {
             messagesInInterval = 0;
         }
         
-        transform.position = new Vector3(transform.position.x,transform.position.y,0);
-
         glow.Update(Time.deltaTime);
 
         if (Math.Abs(size - targetSize) > 0.0001)
