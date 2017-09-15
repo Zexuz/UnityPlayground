@@ -122,6 +122,8 @@ MonoBehaviour:
   timeLeftInInterval: 0
   messagesInInterval: 0
   Data: 
+  fadeSpeed: 0.3
+  data: 
 --- !u!114 &114931445389300900
 MonoBehaviour:
   m_ObjectHideFlags: 1

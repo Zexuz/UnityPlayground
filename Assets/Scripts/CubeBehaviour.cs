@@ -6,7 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CubeBehaviour : MonoBehaviour {
-    
+    private Glow glow;
+
     [HideInInspector]
     public Camera Camera;
 
@@ -17,6 +18,7 @@ public class CubeBehaviour : MonoBehaviour {
     private float dtMsg = 0.0f;
     private float timeLeftInInterval = 0.0f;
     private int messagesInInterval = 0;
+    public float fadeSpeed = 0.3f;
 
     [HideInInspector]
     public string Data;
@@ -42,10 +44,12 @@ public class CubeBehaviour : MonoBehaviour {
     private float size = 1.0f;
     private float targetSize = 1.0f;
 
-    private void Start()
+
+    void Start()
     {
         timeLeftInInterval = INTERVAL;
         dtMsg = 0.0f;       
+        glow = new Glow(gameObject.GetComponent<Renderer>());
         _messageTimes = new List<DateTime>();
         size = transform.localScale.x;
         targetSize = size;
@@ -69,7 +73,9 @@ public class CubeBehaviour : MonoBehaviour {
         }
         
         transform.position = new Vector3(transform.position.x,transform.position.y,0);
-        
+
+        glow.Update(Time.deltaTime);
+
         if (Math.Abs(size - targetSize) > 0.0001)
         {
             float magnitude = targetSize - size;
@@ -106,6 +112,8 @@ public class CubeBehaviour : MonoBehaviour {
 
         messagesInInterval += 1;
 
-        Data = data; 
+        if(glow != null) {
+            glow.InitGlow();
+        }
     }
 }
