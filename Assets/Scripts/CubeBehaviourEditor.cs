@@ -13,7 +13,7 @@ public class CubeBehaviourEditor : Editor
         CubeBehaviour script = (CubeBehaviour)target;
         if (GUILayout.Button("Feed"))
         {
-            script.Feed(script.data);    
+            script.Feed(script.Data);    
         }
     }
 }

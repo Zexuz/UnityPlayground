@@ -25,7 +25,7 @@ public class Glow {
 		this.obj = obj;
 		color = obj.material.color;
 		//obj.material.color = Color.blue;
-		fadeColor = new Color(103f/256f,204f/256f,240f/256f);
+		fadeColor = new Color(190f/256f,227f/256f,240f/256f);
 		direction = 1;		
 		
 		rSpeed = ((fadeColor.r - color.r) * 2) / glowDuration;

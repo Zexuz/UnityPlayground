@@ -29,8 +29,8 @@ public class NodeBehaviour : MonoBehaviour {
         obj.GetComponent<Attract>().Camera = Camera;
         obj.GetComponent<CubeBehaviour>().Camera = Camera;
 
-        obj.transform.parent = gameObject.transform;
-        
+        obj.transform.position = gameObject.transform.position;
+
         blobs.Add(data, obj);
     }
 
