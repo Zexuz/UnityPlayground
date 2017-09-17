@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attract : MonoBehaviour {
 
-	
+    public Camera Camera;
 	public GameObject attractedTo;
 	public float strengthOfAttraction = 5.0f;
 
@@ -17,8 +17,11 @@ public class Attract : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		Vector3 direction = attractedTo.transform.position - transform.position;
+	void Update () {        
+        Vector3 position = attractedTo.transform.position;
+        position.y = Camera.gameObject.transform.position.y;
+        position.y -= 0.1f;
+        Vector3 direction = position - transform.position;
 		_rigidbody.AddForce(strengthOfAttraction * direction);
 	}
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="Puppy" size="0.300000 0.271084"/>
+        <ImageTarget name="Pi2.Top" size="0.750000 0.319336"/>
+        <ImageTarget name="Pi2.Bottom" size="0.750000 0.319336"/>
+        <ImageTarget name="Pi2.Back" size="0.750000 1.200000"/>
+        <ImageTarget name="Pi2.Front" size="0.750000 1.200000"/>
+        <ImageTarget name="Pi2.Right" size="0.320000 1.200000"/>
+        <ImageTarget name="Pi2.Left" size="0.320000 1.200000"/>
+        <ImageTarget name="Pibox.Top" size="0.750000 0.319336"/>
+        <ImageTarget name="Pibox.Bottom" size="0.750000 0.319336"/>
+        <ImageTarget name="Pibox.Back" size="0.750000 1.200000"/>
+        <ImageTarget name="Pibox.Front" size="0.750000 1.200000"/>
+        <ImageTarget name="Pibox.Right" size="0.320000 1.200000"/>
+        <ImageTarget name="Pibox.Left" size="0.320000 1.200000"/>
+        <ImageTarget name="box.Top" size="1.000000 1.000000"/>
+        <ImageTarget name="box.Bottom" size="1.000000 1.000000"/>
+        <ImageTarget name="box.Back" size="1.000000 1.000000"/>
+        <ImageTarget name="box.Front" size="1.000000 1.000000"/>
+        <ImageTarget name="box.Right" size="1.000000 1.000000"/>
+        <ImageTarget name="box.Left" size="1.000000 1.000000"/>
+        <MultiTarget name="Pi2">
+            <Part name="Pi2.Left" translation="-0.375 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="Pi2.Right" translation="0.375 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="Pi2.Front" translation="0 0 0.1599999964237213" rotation="AD: 1 0 0 0"/>
+            <Part name="Pi2.Back" translation="0 0 -0.1599999964237213" rotation="AD: 0 1 0 180"/>
+            <Part name="Pi2.Top" translation="0 0.6000000238418579 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="Pi2.Bottom" translation="0 -0.6000000238418579 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+        <MultiTarget name="Pibox">
+            <Part name="Pibox.Left" translation="-0.375 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="Pibox.Right" translation="0.375 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="Pibox.Front" translation="0 0 0.1599999964237213" rotation="AD: 1 0 0 0"/>
+            <Part name="Pibox.Back" translation="0 0 -0.1599999964237213" rotation="AD: 0 1 0 180"/>
+            <Part name="Pibox.Top" translation="0 0.6000000238418579 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="Pibox.Bottom" translation="0 -0.6000000238418579 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+        <MultiTarget name="box">
+            <Part name="box.Left" translation="-0.5 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="box.Right" translation="0.5 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="box.Front" translation="0 0 0.5" rotation="AD: 1 0 0 0"/>
+            <Part name="box.Back" translation="0 0 -0.5" rotation="AD: 0 1 0 180"/>
+            <Part name="box.Top" translation="0 0.5 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="box.Bottom" translation="0 -0.5 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>

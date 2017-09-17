@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System.Collections;
 using UnityEditor;
 
@@ -12,7 +13,8 @@ public class CubeBehaviourEditor : Editor
         CubeBehaviour script = (CubeBehaviour)target;
         if (GUILayout.Button("Feed"))
         {
-            script.Feed(script.data);    
+            script.Feed(script.Data);    
         }
     }
 }
+#endif
